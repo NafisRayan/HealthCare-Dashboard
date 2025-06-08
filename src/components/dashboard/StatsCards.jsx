@@ -1,47 +1,43 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faWheelchair, 
-  faUserMd, 
-  faUsers, 
-  faBed 
+import {
+  faUserInjured,
+  faStethoscope,
+  faUserMd,
+  faHospital
 } from '@fortawesome/free-solid-svg-icons';
 import { useApp } from '../../context/AppContext';
 
 const StatsCards = () => {
   const { patients, doctors, appointments } = useApp();
-  
+
   const stats = [
     {
       title: 'Total Patients',
       value: patients.length.toString(),
-      icon: faWheelchair,
-      bgColor: 'bg-blue-50',
-      iconColor: 'text-blue-500',
-      illustration: '👨‍🦽'
+      icon: faUserInjured,
+      bgColor: 'bg-blue-100',
+      iconColor: 'text-blue-600'
     },
     {
       title: 'Consultation',
       value: appointments.length.toString(),
-      icon: faUserMd,
-      bgColor: 'bg-pink-50',
-      iconColor: 'text-pink-500',
-      illustration: '👩‍⚕️👨‍💼'
+      icon: faStethoscope,
+      bgColor: 'bg-green-100',
+      iconColor: 'text-green-600'
     },
     {
       title: 'Staff',
       value: doctors.length.toString(),
-      icon: faUsers,
-      bgColor: 'bg-yellow-50',
-      iconColor: 'text-yellow-500',
-      illustration: '👨‍💼👩‍💼'
+      icon: faUserMd,
+      bgColor: 'bg-purple-100',
+      iconColor: 'text-purple-600'
     },
     {
       title: 'Total Rooms',
       value: '12',
-      icon: faBed,
-      bgColor: 'bg-cyan-50',
-      iconColor: 'text-cyan-500',
-      illustration: '🏥'
+      icon: faHospital,
+      bgColor: 'bg-orange-100',
+      iconColor: 'text-orange-600'
     }
   ];
 

@@ -156,47 +156,51 @@ const AppointmentsPage = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-xs sm:text-sm">Total Appointments</p>
+              <p className="text-gray-600 text-xs sm:text-sm font-medium">Total Appointments</p>
               <p className="text-xl sm:text-2xl font-bold text-gray-900">{appointments.length}</p>
+              <p className="text-xs text-gray-500 mt-1">All scheduled visits</p>
             </div>
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <FontAwesomeIcon icon={faCalendar} className="text-blue-500 text-sm sm:text-base" />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <FontAwesomeIcon icon={faCalendar} className="text-blue-600 text-lg sm:text-xl" />
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-xs sm:text-sm">Today's Appointments</p>
+              <p className="text-gray-600 text-xs sm:text-sm font-medium">Today's Appointments</p>
               <p className="text-xl sm:text-2xl font-bold text-gray-900">8</p>
+              <p className="text-xs text-gray-500 mt-1">Scheduled for today</p>
             </div>
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <FontAwesomeIcon icon={faClock} className="text-green-500 text-sm sm:text-base" />
-            </div>
-          </div>
-        </div>
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-600 text-sm">Completed</p>
-              <p className="text-2xl font-bold text-gray-900">{appointments.filter(a => a.status === 'Completed').length}</p>
-            </div>
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <FontAwesomeIcon icon={faCheckCircle} className="text-purple-500" />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-green-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <FontAwesomeIcon icon={faClock} className="text-green-600 text-lg sm:text-xl" />
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm">Cancelled</p>
-              <p className="text-2xl font-bold text-gray-900">{appointments.filter(a => a.status === 'Cancelled').length}</p>
+              <p className="text-gray-600 text-xs sm:text-sm font-medium">Completed</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{appointments.filter(a => a.status === 'Completed').length}</p>
+              <p className="text-xs text-gray-500 mt-1">Successfully finished</p>
             </div>
-            <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-              <FontAwesomeIcon icon={faTimesCircle} className="text-red-500" />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <FontAwesomeIcon icon={faCheckCircle} className="text-purple-600 text-lg sm:text-xl" />
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-600 text-xs sm:text-sm font-medium">Cancelled</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{appointments.filter(a => a.status === 'Cancelled').length}</p>
+              <p className="text-xs text-gray-500 mt-1">Cancelled appointments</p>
+            </div>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-red-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <FontAwesomeIcon icon={faTimesCircle} className="text-red-600 text-lg sm:text-xl" />
             </div>
           </div>
         </div>

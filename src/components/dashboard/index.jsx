@@ -1,4 +1,4 @@
-import StatsCards from "./StatsCards";
+import ImprovedStatsCards from "./ImprovedStatsCards";
 import RevenueChart from "./RevenueChart";
 import PaymentsHistory from "./PaymentsHistory";
 import UpcomingAppointments from "./UpcomingAppointments";
@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Stats Cards */}
-      <StatsCards />
+      <ImprovedStatsCards />
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
