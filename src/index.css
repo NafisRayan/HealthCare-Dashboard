@@ -23,24 +23,74 @@
   max-height: 20px; 
 }
 
-@media (max-width: 480px) {
-  table tbody tr {
-    display: block;
-    margin-bottom: 1rem;
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .mobile-stack {
+    display: block !important;
   }
 
-  table tbody tr td {
-    display: block;
-    text-align: left;
-    padding: 0.5rem 0;
+  .mobile-hide {
+    display: none !important;
   }
 
-  table tbody tr td span {
-    display: block;
-    font-weight: bold;
+  .mobile-full-width {
+    width: 100% !important;
+  }
+}
+
+/* Custom scrollbar for better mobile experience */
+.mobile-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Improved mobile table styles */
+@media (max-width: 640px) {
+  .responsive-table {
+    font-size: 0.875rem;
   }
 
-  table thead {
-    display: none;
+  .responsive-table th,
+  .responsive-table td {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Responsive text utilities */
+@media (max-width: 640px) {
+  .text-responsive-lg {
+    font-size: 1.25rem !important;
+  }
+
+  .text-responsive-base {
+    font-size: 0.875rem !important;
+  }
+
+  .text-responsive-sm {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Mobile-first responsive spacing */
+@media (max-width: 640px) {
+  .p-responsive {
+    padding: 1rem !important;
+  }
+
+  .px-responsive {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .py-responsive {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+}
+
+/* Ensure proper touch targets on mobile */
+@media (max-width: 640px) {
+  button, .btn {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
