@@ -123,7 +123,7 @@ const NewHeader = ({ isMobileMenuOpen = false, setIsMobileMenuOpen = () => {} })
           {/* User Profile */}
           <div className="flex items-center space-x-2 sm:space-x-3 pl-2 sm:pl-4 border-l border-gray-200">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-medium text-gray-900">Johen Doe</p>
+              <p className="text-sm font-medium text-gray-900">Nafis Rayan</p>
               <p className="text-xs text-gray-500">ADMIN</p>
             </div>
             <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
