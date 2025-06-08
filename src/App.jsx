@@ -1,8 +1,10 @@
 
 import './App.css'
 import { AppProvider, useApp } from "./context/AppContext";
-import Sidebar from "./components/Sidebar/NewSidebar";
+import ResponsiveSidebar from "./components/Sidebar/ResponsiveSidebar";
 import Header from "./components/Header/NewHeader";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { useState } from 'react';
 import Dashboard from "./components/dashboard";
 import PatientsPage from "./pages/PatientsPage";
 import DoctorsPage from "./pages/DoctorsPage";
@@ -15,6 +17,8 @@ import MiscPage from "./pages/MiscPage";
 
 const AppContent = () => {
   const { currentPage } = useApp();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const renderPage = () => {
     switch (currentPage) {
@@ -42,16 +46,24 @@ const AppContent = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-[#F8F9FA] font-[Inter]">
-      {/* Sidebar - Hidden on mobile, shown on desktop */}
-      <div className="hidden lg:block">
-        <Sidebar />
-      </div>
+    <div className="min-h-screen bg-[#F8F9FA] font-[Inter]">
+      {/* Responsive Sidebar */}
+      <ResponsiveSidebar
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+        sidebarCollapsed={sidebarCollapsed}
+        setSidebarCollapsed={setSidebarCollapsed}
+      />
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col min-w-0">
+      {/* Main Content - with responsive margin for fixed sidebar */}
+      <div className={`flex flex-col min-h-screen transition-all duration-300 ${
+        sidebarCollapsed ? 'lg:ml-20' : 'lg:ml-64'
+      }`}>
         {/* Header */}
-        <Header />
+        <Header
+          isMobileMenuOpen={isMobileMenuOpen}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
 
         {/* Page Content */}
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-[#F8F9FA] p-3 sm:p-4 md:p-6">
@@ -64,9 +76,11 @@ const AppContent = () => {
 
 function App() {
   return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
+    <ErrorBoundary>
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
+    </ErrorBoundary>
   );
 }
 

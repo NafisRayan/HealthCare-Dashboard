@@ -7,48 +7,31 @@ import {
   faExpand,
   faUser,
   faTimes,
-  faHome,
-  faCalendar,
   faHeartbeat,
-  faChartBar,
-  faCreditCard,
-  faMessage,
-  faEllipsisH
+  faBars
 } from '@fortawesome/free-solid-svg-icons';
 import { useApp } from '../../context/AppContext';
 
-const NewHeader = () => {
-  const { searchQuery, setSearchQuery, notifications, removeNotification, navigateTo } = useApp();
+const NewHeader = ({ isMobileMenuOpen = false, setIsMobileMenuOpen = () => {} }) => {
+  const { searchQuery, setSearchQuery, notifications, removeNotification } = useApp();
   const [showNotifications, setShowNotifications] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const menuItems = [
-    { name: 'Dashboard', icon: faHome },
-    { name: 'Appointments', icon: faCalendar },
-    { name: 'Patients', icon: faUser },
-    { name: 'Doctors', icon: faHeartbeat },
-    { name: 'Features', icon: faChartBar },
-    { name: 'Forms, Tables & Charts', icon: faCreditCard },
-    { name: 'Apps & Widgets', icon: faMessage },
-    { name: 'Authentication', icon: faCog },
-    { name: 'Miscellaneous', icon: faEllipsisH },
-  ];
+
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 px-3 sm:px-4 md:px-6 py-3 md:py-4">
+    <header className="bg-white shadow-sm border-b border-gray-200 px-3 sm:px-4 md:px-6 py-3 md:py-4 sticky top-0 z-20">
       <div className="flex items-center justify-between">
         {/* Left side - Menu toggle and Search */}
         <div className="flex items-center space-x-2 sm:space-x-4 flex-1">
           {/* Mobile Menu Toggle */}
           <button
-            onClick={() => setShowMobileMenu(!showMobileMenu)}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <div className="w-5 h-5 flex flex-col justify-center space-y-1">
-              <div className="w-full h-0.5 bg-gray-600"></div>
-              <div className="w-full h-0.5 bg-gray-600"></div>
-              <div className="w-full h-0.5 bg-gray-600"></div>
-            </div>
+            <FontAwesomeIcon
+              icon={isMobileMenuOpen ? faTimes : faBars}
+              className="text-gray-600 text-lg"
+            />
           </button>
 
           {/* Logo for mobile */}
@@ -150,29 +133,7 @@ const NewHeader = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {showMobileMenu && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-50">
-          <nav className="px-4 py-2">
-            <ul className="space-y-1">
-              {menuItems.map((item, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => {
-                      navigateTo(item.name);
-                      setShowMobileMenu(false);
-                    }}
-                    className="w-full flex items-center space-x-3 px-3 py-3 rounded-lg text-left transition-colors hover:bg-gray-50"
-                  >
-                    <FontAwesomeIcon icon={item.icon} className="text-sm text-gray-600" />
-                    <span className="text-sm font-medium text-gray-900">{item.name}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      )}
+
 
       {/* Mobile Search Bar */}
       <div className="sm:hidden px-3 py-2 border-b border-gray-200">
