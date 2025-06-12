@@ -2,7 +2,11 @@
 
 A comprehensive health tracking dashboard.
 
-![Health Dashboard](public/Health Dashboard.png)
+## Preview
+
+<img src="./public/Health Dashboard.png" alt="Preview" width="600" />
+
+This is a demo preview of the application interface.
 
 ## Description
 
